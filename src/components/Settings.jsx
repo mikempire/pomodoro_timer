@@ -3,7 +3,6 @@ import ReactSlider from 'react-slider';
 import '../styles/slider.css';
 import settingsContext from "../context/SettingsContext";
 import BackButton from "./buttons/BackButton";
-import SettingsButton from "./buttons/SettingsButton";
 
 const Settings = () => {
 

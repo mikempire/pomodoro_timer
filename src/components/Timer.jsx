@@ -5,6 +5,8 @@ import PlayButton from "./buttons/PlayButton";
 import PauseButton from "./buttons/PauseButton";
 import SettingsButton from "./buttons/SettingsButton";
 import settingsContext from "../context/SettingsContext";
+import ring from "../ring.mp3";
+import CheckButton from "./buttons/CheckButton";
 
 const Timer = () => {
     const {
@@ -33,6 +35,10 @@ const Timer = () => {
         secondsLeftRef.current = nextSeconds;
     }
 
+    function playRing() {
+        new Audio(ring).play()
+    }
+
     function initTimer() {
         secondsLeftRef.current = workMinutes * 60;
         setSecondLeft(secondsLeftRef.current);
@@ -52,7 +58,7 @@ const Timer = () => {
                 return;
             }
             if (secondsLeftRef.current === 0) {
-                console.log('here')
+                playRing()
                 return switchMode()
             }
             tick()
@@ -93,6 +99,11 @@ const Timer = () => {
         isPausedRef.current = false
     }
 
+    function doneTimer () {
+        playRing();
+        switchMode()
+    }
+
     return (
         <div>
             <CircularProgressbarWithChildren
@@ -109,6 +120,7 @@ const Timer = () => {
                     isPaused ? <PlayButton onClick={play}/>
                         : <PauseButton onClick={pause}/>
                 }
+                <CheckButton onClick={doneTimer}/>
             </div>
             <div className="setting-btn">
                 <SettingsButton onClick={() => setShowSettings(!showSettings)}/>
