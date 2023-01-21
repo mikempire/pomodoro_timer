@@ -62,7 +62,7 @@ const Timer = () => {
                 return switchMode()
             }
             tick()
-        }, 100)
+        }, 1000)
 
         return () => clearInterval(interval);
 
