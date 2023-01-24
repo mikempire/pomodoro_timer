@@ -1,15 +1,17 @@
 import React, {useContext} from 'react';
 import ReactSlider from 'react-slider';
-import '../styles/slider.css';
+
 import settingsContext from "../context/SettingsContext";
 import BackButton from "./buttons/BackButton";
+
+import '../styles/slider.css';
 
 const Settings = () => {
 
     const {workMinutes, breakMinutes, setWorkMinutes, setBreakMinutes, setShowSettings, showSettings } = useContext(settingsContext);
 
     return (
-        <div>
+        <>
             <label>Work Minutes: {workMinutes}:00</label>
             <ReactSlider
                 className='slider'
@@ -33,7 +35,7 @@ const Settings = () => {
             <div className="back-btn">
                 <BackButton onClick={() => setShowSettings(!showSettings)}/>
             </div>
-        </div>
+        </>
     );
 };
 

@@ -105,7 +105,7 @@ const Timer = () => {
     }
 
     return (
-        <div>
+        <>
             <CircularProgressbarWithChildren
                 value={percentage}
                 text={`${minutes}: ${seconds}`}
@@ -125,7 +125,7 @@ const Timer = () => {
             <div className="setting-btn">
                 <SettingsButton onClick={() => setShowSettings(!showSettings)}/>
             </div>
-        </div>
+        </>
     );
 };
 
